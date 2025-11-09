@@ -21,9 +21,8 @@ public class ContactUsTest {
         driver=new ThreadLocal<>();
         driver.set(new Driver(browserName));
 //        driver = new Driver(browserName);
-        driver.get().get().navigate().to("http://automationexercise.com");
-        driver.get().get().manage().window().maximize();
-
+        driver.get().browser().navigateToURL("http://automationexercise.com");
+        driver.get().browser().maximizeWindows();
     }
 
     @Test
