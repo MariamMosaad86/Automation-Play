@@ -2,6 +2,7 @@ package pages;
 
 import com.github.javafaker.Faker;
 import driverfactory.Driver;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -37,6 +38,7 @@ public class RegistrationPage {
 
     /***************************************** Assertions **********************************************/
 
+    @Step("checkThatSignUpPageIsLoadedSuccessfully")
     public RegistrationPage checkThatSignUpPageIsLoadedSuccessfully() {
         Assert.assertTrue(driver.browser().getCurrentURL().contains("/signup"));
         Assert.assertEquals(driver.element().getTextOf(signUpFormTitle), "ENTER ACCOUNT INFORMATION");
@@ -48,6 +50,7 @@ public class RegistrationPage {
 
     Faker faker = new Faker();
 
+    @Step("fillInRegistrationForm")
     public RegistrationPage fillInRegistrationForm(String password) {
         driver.element().click(MrsGender);
         driver.element().fillField(singUpPassword, password);
@@ -65,6 +68,7 @@ public class RegistrationPage {
         return this;
     }
 
+    @Step("clickOnSignUpButton")
     public RegistrationSuccessPage clickOnSignUpButton() {
         driver.element().click(signUpButton);
         return new RegistrationSuccessPage(driver);

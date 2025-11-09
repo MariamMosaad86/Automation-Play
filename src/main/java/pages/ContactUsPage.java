@@ -2,6 +2,7 @@ package pages;
 
 import com.github.javafaker.Faker;
 import driverfactory.Driver;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -31,6 +32,7 @@ public class ContactUsPage {
 
 
     /***************************************** Assertions **********************************************/
+    @Step("check That Navigate To ContactUs Page Successfully")
     public ContactUsPage checkThatNavigateToContactUsPageSuccessfully() {
         Assert.assertTrue(driver.browser().getCurrentURL().contains("/contact_us"));
         Assert.assertTrue(driver.element().isDisplayed(getInTouchTitle));
@@ -38,6 +40,7 @@ public class ContactUsPage {
         return this;
     }
 
+    @Step("check That Success From I sSubmitted Successfully")
     public ContactUsPage checkThatSuccessFromIsSubmittedSuccessfully() {
         Assert.assertTrue(driver.element().isDisplayed(successMessage));
         Assert.assertEquals(driver.element().getTextOf(successMessage), "Success! Your details have been submitted successfully.");
@@ -46,6 +49,7 @@ public class ContactUsPage {
 
     /***************************************** Actions **********************************************/
 
+    @Step("fill ContactUs Form")
     public ContactUsPage fillContactUsForm() {
         driver.element().fillField(name, faker.name().fullName());
         driver.element().fillField(email, faker.internet().emailAddress());
@@ -56,6 +60,7 @@ public class ContactUsPage {
     }
 
     // upload file
+    @Step("click On Choose File Button")
     public ContactUsPage clickOnChooseFileButton() {
         WebElement uploadInput = driver.get().findElement(chooseFileButton);
         String filePath = System.getProperty("user.dir") + "/src/test/resources/Screenshot_1.png";
@@ -64,6 +69,7 @@ public class ContactUsPage {
         return this;
     }
 
+    @Step("clickOnSubmitButton")
     public ContactUsPage clickOnSubmitButton() {
 //        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.element().click(submitButton);
@@ -71,6 +77,7 @@ public class ContactUsPage {
         return this;
     }
 
+    @Step("clickOnHomeButton")
     public HomePage clickOnHomeButton() {
         driver.element().click(homeButton);
         return new HomePage(driver);

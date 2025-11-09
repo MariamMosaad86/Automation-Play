@@ -1,6 +1,7 @@
 package pages;
 
 import driverfactory.Driver;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
@@ -16,10 +17,11 @@ public class TestPage {
     }
 
     /***************************************** Assertions **********************************************/
-    public TestPage validateThatTestPageIsLoadedSuccessfully(){
+    @Step("validateThatTestPageIsLoadedSuccessfully")
+    public TestPage validateThatTestPageIsLoadedSuccessfully() {
         Assert.assertTrue(driver.browser().getCurrentURL().contains("/test_cases"));
         Assert.assertTrue(driver.element().isDisplayed(testCaseTitle));
-        Assert.assertEquals(driver.element().getTextOf(testCaseTitle),"TEST CASES");
-        return this ;
+        Assert.assertEquals(driver.element().getTextOf(testCaseTitle), "TEST CASES");
+        return this;
     }
 }

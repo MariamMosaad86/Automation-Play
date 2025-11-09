@@ -1,6 +1,7 @@
 package pages;
 
 import driverfactory.Driver;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.StaleElementReferenceException;
@@ -35,6 +36,7 @@ public class RegistrationSuccessPage {
 
 
     /***************************************** Assertions **********************************************/
+    @Step("checkThatSuccessMessageShouldBeDisplayed")
     public RegistrationSuccessPage checkThatSuccessMessageShouldBeDisplayed() {
 //        wait.until(ExpectedConditions.urlContains("/account_created"));
         Assert.assertTrue(driver.browser().getCurrentURL().contains("/account_created"));
@@ -47,6 +49,7 @@ public class RegistrationSuccessPage {
 
     /***************************************** Actions **********************************************/
 
+    @Step("clickOnContinueButton")
     public HomePage clickOnContinueButton() {
         driver.element().click(continueButton);
         return new HomePage(driver);

@@ -1,6 +1,7 @@
 package pages;
 
 import driverfactory.Driver;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
@@ -22,6 +23,7 @@ public class FirstProductPage {
 
     /***************************************** Assertions ****************************************/
 
+    @Step("check That First Page Loaded Successfully")
     public FirstProductPage checkThatFirstPageLoadedSuccessfully(){
         Assert.assertTrue(driver.browser().getCurrentURL().contains("product_details/1"));
         Assert.assertTrue(driver.element().isDisplayed(blueTop));
@@ -33,6 +35,7 @@ public class FirstProductPage {
         return this;
     }
 
+    @Step("check That Product Name Category Price Availability Condition Brand Values Are Visible")
     public void checkThatProductNameCategoryPriceAvailabilityConditionBrandValuesAreVisible(){
         Assert.assertEquals(driver.element().getTextOf(blueTop),"Blue Top");
         Assert.assertEquals(driver.element().getTextOf(category),"Category: Women > Tops");

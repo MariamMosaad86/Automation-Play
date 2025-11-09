@@ -1,6 +1,7 @@
 package pages;
 
 import driverfactory.Driver;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
@@ -44,39 +45,43 @@ public class LoginSignupPage {
 
     /************************************ Actions ****************************************/
 
-
+    @Step("fillInLoginEmail")
     public LoginSignupPage fillInLoginEmail(String email) {
-        driver.element().fillField(loginEmail,email);
+        driver.element().fillField(loginEmail, email);
         return this;
     }
 
+    @Step("fillInLoginPassword")
     public LoginSignupPage fillInLoginPassword(String password) {
-        driver.element().fillField(loginPassword,password);
+        driver.element().fillField(loginPassword, password);
         return this;
     }
 
+    @Step("clickOnLoginButton")
     public HomePage clickOnLoginButton() {
         driver.element().click(loginButton);
         return new HomePage(driver);
     }
 
-
+    @Step("fillInSignUpName")
     public LoginSignupPage fillInSignUpName(String name) {
-        driver.element().fillField(signUpName,name);
+        driver.element().fillField(signUpName, name);
         return this;
     }
 
+    @Step("fillInSignUpEmail")
     public LoginSignupPage fillInSignUpEmail(String email) {
-        driver.element().fillField(signUpEmail,email);
+        driver.element().fillField(signUpEmail, email);
         return this;
     }
 
+    @Step("clickOnSignUpButton")
     public RegistrationPage clickOnSignUpButton() {
         driver.element().click(signUpButton);
-       return new RegistrationPage(driver);
-
-
+        return new RegistrationPage(driver);
     }
+
+    @Step("clickOnSignUpButtonWithExistEmail")
     public LoginSignupPage clickOnSignUpButtonWithExistEmail() {
         driver.element().click(signUpButton);
         return this;
