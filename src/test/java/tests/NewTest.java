@@ -19,9 +19,10 @@ public class NewTest {
     public void setup() {
         driver = new Driver("CHROME");
         faker = new Faker();
-
-        driver.get().navigate().to("https://automationexercise.com/");
-        driver.get().manage().window().maximize();
+        driver.browser().navigateToURL("https://automationexercise.com/");
+        driver.browser().maximizeWindows();
+//        driver.get().navigate().to("https://automationexercise.com/");
+//        driver.get().manage().window().maximize();
         driver.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
     }
 
