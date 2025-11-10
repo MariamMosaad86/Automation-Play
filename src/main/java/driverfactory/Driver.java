@@ -6,6 +6,8 @@ import listeners.webdriver.WebDriverListener;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.events.EventFiringDecorator;
 
+import static utilities.properties.PropertiesManager.webConfig;
+
 
 public class Driver {
 
@@ -20,6 +22,28 @@ public class Driver {
         driver.set(new EventFiringDecorator<>(org.openqa.selenium.WebDriver.class,
                 new WebDriverListener(undecoratedDriver)).decorate(undecoratedDriver));
 //      undecoratedDriver=new ChromeDriverFactory().startDriver();
+        System.out.println("Starting the execution via "+driverType+" driver.");
+        driver.get().manage().window().maximize();
+        if (! webConfig.getProperty("BaseURL").isEmpty()){
+            driver.get().navigate().to( webConfig.getProperty("BaseURL"));
+        }
+
+    }
+
+    public Driver() {
+        String driverType = webConfig.getProperty("BrowserType");
+        WebDriver undecoratedDriver = getDriver(driverType).startDriver();
+        assert undecoratedDriver != null;
+
+        driver = new ThreadLocal<>();
+        driver.set(new EventFiringDecorator<>(org.openqa.selenium.WebDriver.class,
+                new WebDriverListener(undecoratedDriver)).decorate(undecoratedDriver));
+//      undecoratedDriver=new ChromeDriverFactory().startDriver();
+        System.out.println("Starting the execution via "+driverType+" driver.");
+        driver.get().manage().window().maximize();
+        if (! webConfig.getProperty("BaseURL").isEmpty()){
+            driver.get().navigate().to( webConfig.getProperty("BaseURL"));
+        }
     }
 
 

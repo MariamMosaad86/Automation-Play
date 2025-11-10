@@ -12,16 +12,17 @@ public class ContactUsTest {
 
 //    Driver driver;
 
-   public ThreadLocal<Driver>driver;
+    public ThreadLocal<Driver> driver;
 
 
     @BeforeClass
     @Parameters(value = {"browserName"})
     public void setup(@Optional("CHROME") String browserName) {
-        driver=new ThreadLocal<>();
-        driver.set(new Driver(browserName));
+        driver = new ThreadLocal<>();
+        driver.set(new Driver());
+//        driver.set(new Driver(browserName));
 //        driver = new Driver(browserName);
-        driver.get().browser().navigateToURL("http://automationexercise.com");
+//        driver.get().browser().navigateToURL("http://automationexercise.com");
         driver.get().browser().maximizeWindows();
     }
 
@@ -53,8 +54,8 @@ public class ContactUsTest {
 
     @AfterClass
     public void tearDown() {
-//        driver.get().browser().deleteAllCookies();
-        driver.get().get().manage().deleteAllCookies();
+//        driver.get().get().manage().deleteAllCookies();
+        driver.get().browser().deleteAllCookies();
         driver.get().quit();
     }
 }

@@ -29,6 +29,6 @@ node {
         }
     }
     stage('Results') {
-       allure includeProperties: false, jdk: 'JAVA_HOME', results: [[path: 'allure-results']]
+       allure includeProperties: false, jdk: 'JAVA_HOME', results: [[path: 'target/allure-results']]
     }
 }
