@@ -7,17 +7,25 @@ import java.util.Properties;
 
 public class PropertiesManager {
 
-    public static Properties webConfig;
+    public static Properties WebConfig;
+    public static Properties ReportConfig;
 
-    public PropertiesManager(){
+    public PropertiesManager() {
     }
 
-    public static void initializeProperties(){
-        FileInputStream fileInputStream= null;    //بعمل object جديد علشان يقرا ال properties
+    public static void initializeProperties() {
+        FileInputStream webConfigFile = null;    //بعمل object جديد علشان يقرا ال properties
+        FileInputStream reportConfigFile = null;
         try {
-           fileInputStream  = new FileInputStream("src/main/resources/webConfigurations.properties");//بديلة ال path الخاص يال config file
-            webConfig = new Properties();
-            webConfig.load(fileInputStream);
+            webConfigFile = new FileInputStream("src/main/resources/webConfigurations.properties");//بديلة ال path الخاص يال config file
+            reportConfigFile=new FileInputStream("src/main/resources/Reporting.properties");
+
+            WebConfig = new Properties();
+            WebConfig.load(webConfigFile);
+
+            ReportConfig = new Properties();
+            ReportConfig.load(reportConfigFile);
+
         } catch (FileNotFoundException e) {
             System.out.println("Property file is not found");
         } catch (IOException e) {
