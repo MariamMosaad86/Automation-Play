@@ -19,11 +19,11 @@ public class ContactUsTest {
     @Parameters(value = {"browserName"})
     public void setup(@Optional("CHROME") String browserName) {
         driver = new ThreadLocal<>();
-        driver.set(new Driver());
+        driver.set(new Driver(browserName));
 //        driver.set(new Driver(browserName));
 //        driver = new Driver(browserName);
 //        driver.get().browser().navigateToURL("http://automationexercise.com");
-        driver.get().browser().maximizeWindows();
+//        driver.get().browser().maximizeWindows();
     }
 
     @Test
